@@ -238,6 +238,3 @@ if uploaded_files:
 
     # Navigation back to Converter
     st.markdown("[📥 Go to Converter](https://landmark-hunt-json-converter.streamlit.app/)")
-
-else:
-    st.info("📂 Please upload JSON or ZIP files to explore data.")
