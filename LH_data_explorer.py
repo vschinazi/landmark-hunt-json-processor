@@ -162,7 +162,7 @@ if uploaded_files:
         all_landmarks = pd.concat([extract_landmark_data(c) for c in json_files], ignore_index=True)
         st.dataframe(all_landmarks)
         st.download_button("Download Landmarks", all_landmarks.to_csv(index=False), "landmark_coordinates.csv")
-        if st.checkbox("🗺Show Landmarks on Map"):
+        if st.checkbox("Show Landmarks on Map"):
             st.map(all_landmarks.rename(columns={'latitude': 'lat', 'longitude': 'lon'}))
 
     # Section 3: Task-Level Trial Data
@@ -187,7 +187,7 @@ if uploaded_files:
         st.dataframe(convex_hull_df)
         st.download_button("Download Convex Hull Data", convex_hull_df.to_csv(index=False), "convex_hull_areas.csv")
 
-        if st.checkbox("🗺Show Convex Hulls with Landmarks (Interactive Map)"):
+        if st.checkbox("Show Convex Hulls with Landmarks (Interactive Map)"):
             landmark_layer = pdk.Layer(
                 "ScatterplotLayer",
                 data=all_landmarks.rename(columns={"latitude": "lat", "longitude": "lon"}),
