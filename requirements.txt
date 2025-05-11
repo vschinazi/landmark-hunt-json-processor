@@ -5,3 +5,4 @@ geopandas
 shapely
 pyproj
 xlsxwriter
+pydeck
