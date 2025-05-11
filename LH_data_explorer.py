@@ -124,7 +124,7 @@ def extract_trial_data(content, source_filter=None, task_filter=None):
 st.title("📖 Landmark Hunt: Data Explorer")
 
 # Navigation to Converter
-st.markdown("[📥 Go to Converter](https://landmark-hunt-json-converter.streamlit.app/)")
+st.markdown("[Go to Converter](https://landmark-hunt-json-converter.streamlit.app/)")
 
 
 uploaded_files = st.file_uploader(
@@ -137,7 +137,7 @@ if uploaded_files:
     json_files = read_json_files(uploaded_files)
 
     # Section 1: Participant & Session Overview
-    with st.expander("📊 Participant & Session Overview"):
+    with st.expander("Participant & Session Overview"):
         session_data = []
         for content in json_files:
             data = json.loads(content)
@@ -155,18 +155,18 @@ if uploaded_files:
             })
         df_session = pd.DataFrame(session_data)
         st.dataframe(df_session)
-        st.download_button("📥 Download Overview", df_session.to_csv(index=False), "session_overview.csv")
+        st.download_button("Download Overview", df_session.to_csv(index=False), "session_overview.csv")
 
     # Section 2: Landmark Coordinates
-    with st.expander("📍 Landmark Coordinates"):
+    with st.expander("Landmark Coordinates"):
         all_landmarks = pd.concat([extract_landmark_data(c) for c in json_files], ignore_index=True)
         st.dataframe(all_landmarks)
-        st.download_button("📥 Download Landmarks", all_landmarks.to_csv(index=False), "landmark_coordinates.csv")
-        if st.checkbox("🗺️ Show Landmarks on Map"):
+        st.download_button("Download Landmarks", all_landmarks.to_csv(index=False), "landmark_coordinates.csv")
+        if st.checkbox("🗺Show Landmarks on Map"):
             st.map(all_landmarks.rename(columns={'latitude': 'lat', 'longitude': 'lon'}))
 
     # Section 3: Task-Level Trial Data
-    with st.expander("🎯 Task-Level Trial Data"):
+    with st.expander("Task-Level Trial Data"):
         source_filter = st.selectbox("Filter by Task Source", ["All", "assessment", "manual", "reminder"])
         task_filter = st.selectbox("Filter by Task Type", ["All", "pointing", "distance", "mapping"])
 
@@ -178,16 +178,16 @@ if uploaded_files:
             ignore_index=True
         )
         st.dataframe(all_trials)
-        st.download_button("📥 Download Trials", all_trials.to_csv(index=False), "trial_data.csv")
+        st.download_button("Download Trials", all_trials.to_csv(index=False), "trial_data.csv")
 
     # Section 4: Spatial Footprint (Convex Hull Area)
-    with st.expander("🗺️ Spatial Footprint (Convex Hull Area)"):
+    with st.expander("Spatial Footprint (Convex Hull Area)"):
         all_landmarks = pd.concat([extract_landmark_data(c) for c in json_files], ignore_index=True)
         convex_hull_df = calculate_convex_hull_area(all_landmarks)
         st.dataframe(convex_hull_df)
-        st.download_button("📥 Download Convex Hull Data", convex_hull_df.to_csv(index=False), "convex_hull_areas.csv")
+        st.download_button("Download Convex Hull Data", convex_hull_df.to_csv(index=False), "convex_hull_areas.csv")
 
-        if st.checkbox("🗺️ Show Convex Hulls with Landmarks (Interactive Map)"):
+        if st.checkbox("🗺Show Convex Hulls with Landmarks (Interactive Map)"):
             landmark_layer = pdk.Layer(
                 "ScatterplotLayer",
                 data=all_landmarks.rename(columns={"latitude": "lat", "longitude": "lon"}),
@@ -237,4 +237,4 @@ if uploaded_files:
             ))
 
     # Navigation back to Converter
-    st.markdown("[📥 Go to Converter](https://landmark-hunt-json-converter.streamlit.app/)")
+    st.markdown("[Go to Converter](https://landmark-hunt-json-converter.streamlit.app/)")
