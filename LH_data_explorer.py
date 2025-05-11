@@ -121,7 +121,7 @@ def extract_trial_data(content, source_filter=None, task_filter=None):
 # Streamlit UI
 # ------------------------
 
-st.title("📖 Landmark Hunt: Data Explorer")
+st.title("Landmark Hunt Data Explorer")
 
 # Navigation to Converter
 st.markdown("[Go to Converter](https://landmark-hunt-json-converter.streamlit.app/)")
