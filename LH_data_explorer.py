@@ -124,7 +124,8 @@ def extract_trial_data(content, source_filter=None, task_filter=None):
 st.title("📖 Landmark Hunter: Explorer")
 
 # Navigation to Converter
-st.markdown("[📥 Go to Converter (https://landmark-hunt-json-converter.streamlit.app/)")
+st.markdown("[📥 Go to Converter](https://landmark-hunt-json-converter.streamlit.app/)")
+
 
 uploaded_files = st.file_uploader(
     "Upload JSON files or ZIP archives", 
