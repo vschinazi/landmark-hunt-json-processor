@@ -210,7 +210,7 @@ def convert_df_to_excel(df):
     return output.getvalue()
 
 # Streamlit App Interface
-st.title("📊 Landmark Hunt JSON Processor")
+st.title("Landmark Hunt JSON Converter")
 
 uploaded_files = st.file_uploader(
     "Upload JSON or ZIP files", 
