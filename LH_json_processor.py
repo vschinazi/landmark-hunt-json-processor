@@ -213,7 +213,7 @@ def convert_df_to_excel(df):
 st.title("Landmark Hunt JSON Converter")
 
 # Navigation to Explorer
-st.markdown("[📖 Go to Explorer](https://landmark-hunt-data-explorer.streamlit.app/)")
+st.markdown("[Go to Explorer](https://landmark-hunt-data-explorer.streamlit.app/)")
 
 uploaded_files = st.file_uploader(
     "Upload JSON or ZIP files", 
@@ -234,7 +234,7 @@ if st.button("Process Data"):
 
         excel_data = convert_df_to_excel(df)
         st.download_button(
-            label="📥 Download as Excel",
+            label="Download as Excel",
             data=excel_data,
             file_name=f"{source_filter}_Details.xlsx",
             mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
