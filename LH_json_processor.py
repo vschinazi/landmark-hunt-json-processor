@@ -212,6 +212,9 @@ def convert_df_to_excel(df):
 # Streamlit App Interface
 st.title("Landmark Hunt JSON Converter")
 
+# Navigation to Explorer
+st.markdown("[📖 Go to Explorer](https://landmark-hunt-data-explorer.streamlit.app/)")
+
 uploaded_files = st.file_uploader(
     "Upload JSON or ZIP files", 
     type=["json", "zip"], 
