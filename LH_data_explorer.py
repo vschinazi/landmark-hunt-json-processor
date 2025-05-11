@@ -235,6 +235,3 @@ if uploaded_files:
                 initial_view_state=view_state,
                 layers=layers,
             ))
-
-    # Navigation back to Converter
-    st.markdown("[Go to Converter](https://landmark-hunt-json-converter.streamlit.app/)")
