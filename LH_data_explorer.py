@@ -205,15 +205,14 @@ if uploaded_files:
                     hull = MultiPoint(coords).convex_hull
                     if hull.geom_type == 'Polygon':
                         polygons.append({
-                        'userID': user,
-                        'polygon': [[list(coord) for coord in hull.exterior.coords]]
+                            'userID': user,
+                            'polygon': [list(hull.exterior.coords)]
                         })
-
 
             if polygons:
                 polygon_layer = pdk.Layer(
                     "PolygonLayer",
-                    data=polygons,
+                    data=pd.DataFrame(polygons),
                     get_polygon='polygon',
                     get_fill_color='[255, 0, 0, 80]',
                     stroked=True,
