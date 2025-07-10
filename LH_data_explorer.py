@@ -206,7 +206,7 @@ if uploaded_files:
                     if hull.geom_type == 'Polygon':
                         polygons.append({
                             'userID': user,
-                            'polygon': [list(hull.exterior.coords)]
+                            'polygon': list(hull.exterior.coords)
                         })
 
             if polygons:
